@@ -1,6 +1,6 @@
 import "./Home.css";
 import {content} from "./content";
-import {TITLE, FIRST_PARAGRAPH, SECOND_PARAGRAPH} from "../../util/env";
+import {FIRST_PARAGRAPH, SECOND_PARAGRAPH, TITLE} from "../../util/env";
 
 export default function Home() {
     return <div className="home">
