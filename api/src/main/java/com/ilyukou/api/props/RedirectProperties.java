@@ -21,8 +21,9 @@ public class RedirectProperties {
 
     @PostConstruct
     void log() {
+        log.info("********************************************");
         log.info("Found {} redirect properties", resources.size());
-
-        resources.forEach((resource, uri) -> log.info("Found redirection '{}' for resource '{}'", resource, uri));
+        resources.forEach((resource, uri) -> log.info("Found redirection '{}' for resource '{}'", uri, resource));
+        log.info("********************************************");
     }
 }

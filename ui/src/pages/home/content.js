@@ -6,6 +6,7 @@ import github from "./png/github.svg";
 import {API_BASE} from "../../util/env";
 
 const REDIRECT_BASE = API_BASE + "/redirect";
+export const INFO_BASE = API_BASE + "/info";
 
 export const content = {
     youtube: {

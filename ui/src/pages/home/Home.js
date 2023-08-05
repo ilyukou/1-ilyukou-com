@@ -1,8 +1,19 @@
 import "./Home.css";
-import {content} from "./content";
+import {content, INFO_BASE} from "./content";
 import {FIRST_PARAGRAPH, SECOND_PARAGRAPH, TITLE} from "../../util/env";
+import {useState} from "react";
+
+async function fetchInfo(callback) {
+    await (await fetch(INFO_BASE)).json().then(resp => {
+        let time = new Date(resp.timestamp);
+        callback("Synced at " + time.getHours() + ":" + time.getMinutes());
+    });
+}
 
 export default function Home() {
+    const [time, setTime] = useState('...');
+    fetchInfo(setTime);
+
     return <div className="home">
         <div className="container-fluid">
             {getDescriptionRow(TITLE, "fs-1", "marginTop50px")}
@@ -16,6 +27,14 @@ export default function Home() {
                     {getRow(content.twitter, content.github)}
                 </div>
                 <div className="col-2"/>
+            </div>
+
+            <div className="row marginTop10px">
+                <div className="col-5"/>
+                <div className="col-2">
+                    <p className="text-center ">{time}</p>
+                </div>
+                <div className="col-5"/>
             </div>
         </div>
     </div>
