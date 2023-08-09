@@ -1,13 +1,21 @@
 import "./Home.css";
 import {content, INFO_BASE} from "./content";
-import {FIRST_PARAGRAPH, SECOND_PARAGRAPH, TITLE} from "../../util/env";
+import {EMAIL, FIRST_PARAGRAPH, SECOND_PARAGRAPH, TITLE} from "../../util/env";
 import {useState} from "react";
 
 async function fetchInfo(callback) {
     await (await fetch(INFO_BASE)).json().then(resp => {
         let time = new Date(resp.timestamp);
-        callback("Synced at " + time.getHours() + ":" + time.getMinutes());
+        callback("Synced at " + wrapTime(time.getHours()) + ":" + wrapTime(time.getMinutes()));
     });
+}
+
+function wrapTime(time) {
+    if (time < 10) {
+        return "0" + time;
+    } else {
+        return time;
+    }
 }
 
 export default function Home() {
@@ -29,10 +37,18 @@ export default function Home() {
                 <div className="col-2"/>
             </div>
 
+            <div className="row marginTop50px">
+                <div className="col-5"/>
+                <div className="col-2">
+                    <p className="text-center">{time}</p>
+                </div>
+                <div className="col-5"/>
+            </div>
+
             <div className="row marginTop10px">
                 <div className="col-5"/>
                 <div className="col-2">
-                    <p className="text-center ">{time}</p>
+                    <p className="text-center">{EMAIL}</p>
                 </div>
                 <div className="col-5"/>
             </div>
