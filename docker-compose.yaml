@@ -1,0 +1,22 @@
+version: "3_9"
+services:
+  ui:
+    image: ilyailyukou/ilyukou-com:latest
+    container_name: ui
+    ports:
+      - 3000:3000
+    depends_on:
+      - backend
+
+  backend:
+    image: ilyailyukou/api-ilyukou-com:latest
+    container_name: backend
+    ports:
+      - 8080:8080
+    environment:
+      COM_ILYUKOU_API_REDIRECT_RESOURCES_TWITTER: https://twitter.com/ilyailyukou
+      COM_ILYUKOU_API_REDIRECT_RESOURCES_TIKTOK: https://www.tiktok.com/@ilyailyukou
+      COM_ILYUKOU_API_REDIRECT_RESOURCES_GITHUB: https://github.com/ilyukou
+      COM_ILYUKOU_API_REDIRECT_RESOURCES_YOUTUBE: https://www.youtube.com/@ilyukou
+
+      COM_ILYUKOU_API_REDIRECT_ERROR_404: http://localhost:3000/404

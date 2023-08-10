@@ -8,14 +8,6 @@ export const Footer = (props) => {
         <div className="row marginTop50px">
             <div className="col-5"/>
             <div className="col-2">
-                <p className="text-center">{time}</p>
-            </div>
-            <div className="col-5"/>
-        </div>
-
-        <div className="row marginTop10px">
-            <div className="col-5"/>
-            <div className="col-2">
                 <p className="text-center">{props.email}</p>
             </div>
             <div className="col-5"/>
@@ -27,6 +19,14 @@ export const Footer = (props) => {
                 <a href={props.sourceCode}>
                     <p className="text-center">Source code</p>
                 </a>
+            </div>
+            <div className="col-5"/>
+        </div>
+
+        <div className="row marginTop10px">
+            <div className="col-5"/>
+            <div className="col-2">
+                <p className="text-center">{time}</p>
             </div>
             <div className="col-5"/>
         </div>

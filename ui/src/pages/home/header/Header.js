@@ -1,3 +1,5 @@
+import './Header.css';
+
 export const Header = (props) => {
     return <>
         <div className="row marginTop50px">

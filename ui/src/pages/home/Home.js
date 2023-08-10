@@ -2,9 +2,9 @@ import React from "react";
 
 import "./Home.css";
 
-import {Header} from "./Header";
-import {Footer} from "./Footer";
-import {Content} from "./Content";
+import {Header} from "./header/Header";
+import {Footer} from "./footer/Footer";
+import {Content} from "./content/Content";
 
 const SECOND_PARAGRAPH = process.env.REACT_APP_SECOND_PARAGRAPH;
 const FIRST_PARAGRAPH = process.env.REACT_APP_FIRST_PARAGRAPH;
