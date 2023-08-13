@@ -34,8 +34,12 @@ export const Footer = (props) => {
 }
 
 async function fetchInfo(callback, infoApi) {
-    await (await fetch(infoApi)).json().then(resp => {
+    try {
+        const req = await fetch(infoApi);
+        const resp = await req.json();
         let time = new Date(resp.timestamp);
         callback("Synced at " + time.toLocaleTimeString(navigator.language, {hour: '2-digit', minute:'2-digit'}));
-    });
+    } catch (e) {
+        callback("API isn't alive");
+    }
 }
