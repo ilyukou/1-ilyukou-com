@@ -15,6 +15,20 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>17</java.version>
+
+        <!-- Docker Image name -->
+        <docker.image.name></docker.image.name>
+
+        <!--
+            false - image will be built
+            true - image will be built and pushed to the registry. Registry config you can find below
+        -->
+        <docker.registry.publish>false</docker.registry.publish>
+
+        <!-- Docker Registry configuration. Optional if docker.registry.publish=false -->
+        <docker.registry.url></docker.registry.url>
+        <docker.registry.username></docker.registry.username>
+        <docker.registry.password></docker.registry.password>
     </properties>
     <dependencies>
         <dependency>
@@ -38,9 +52,22 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <image>
+                        <name>${docker.image.name}</name>
+                        <publish>${docker.registry.publish}</publish>
+                    </image>
+                    <docker>
+                        <publishRegistry>
+                            <url>${docker.registry.url}</url>
+                            <username>${docker.registry.username}</username>
+                            <password>${docker.registry.password}</password>
+                        </publishRegistry>
+                    </docker>
+                </configuration>
             </plugin>
         </plugins>
-        <!-- To see props from the maven-->
+        <!-- Enable to see maven props into application.properties -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
